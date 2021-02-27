@@ -1,0 +1,17 @@
+doctype html
+html
+  head
+    title
+      | RailsTrial
+    meta[name="viewport" content="width=device-width,initial-scale=1"]
+    = csrf_meta_tags
+    = csp_meta_tag
+    = javascript_pack_tag 'application'
+    = stylesheet_pack_tag 'application'
+    = stylesheet_link_tag 'application', media: 'all'
+    = javascript_pack_tag 'application'
+  body
+    = render 'shared/header'
+    = render 'shared/flash'
+    main
+      = yield

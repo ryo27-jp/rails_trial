@@ -1,0 +1,20 @@
+h1 ログイン
+
+.container
+  .row
+    .col-md-6.offset-md-3
+      .card
+        = form_with scope: :session, local: true do |f|
+          .form-group
+            = f.label :email, 'メールアドレス'
+            = f.email_field :email, class: 'form-control'
+          .form-group
+            = f.label :password, 'パスワード'
+            = f.password_field :password, class: 'form-control'
+
+            = f.submit 'ログイン', class: 'btn btn-primary'
+          
+        .card
+        .card-body
+          | アカウントをお持ちでないですか？
+          = link_to '登録する', new_user_path 
