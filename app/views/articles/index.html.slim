@@ -2,6 +2,7 @@
   .container
     .row
       - @articles.each do |article|
+       - if article.publish? || current_user
         .col-sm-4
           .card.text-center
             .card-header
