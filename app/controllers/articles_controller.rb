@@ -2,11 +2,11 @@ class ArticlesController < ApplicationController
   before_action :login_required, except: :index
 
   def index
-    @pagy,@articles = if current_user
-                  pagy(current_user.articles.includes(:user))
-                else
-                  pagy(Article.includes(:user))
-                end
+    @pagy, @articles = if current_user
+                         pagy(current_user.articles.includes(:user))
+                       else
+                         pagy(Article.includes(:user))
+                       end
   end
 
   def new
@@ -42,9 +42,7 @@ class ArticlesController < ApplicationController
 
   def destroy
     @article = current_user.articles.find(params[:id])
-    if @article.destroy!
-      redirect_to articles_path, success: '投稿を削除しました。'
-    end
+    redirect_to articles_path, success: '投稿を削除しました。' if @article.destroy!
   end
 
   private
