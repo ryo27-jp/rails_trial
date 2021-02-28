@@ -104,6 +104,7 @@ GEM
     nokogiri (1.11.1)
       mini_portile2 (~> 2.5.0)
       racc (~> 1.4)
+    pagy (3.11.0)
     parallel (1.20.1)
     parser (3.0.0.0)
       ast (~> 2.4.1)
@@ -226,6 +227,7 @@ DEPENDENCIES
   jbuilder (~> 2.7)
   listen (~> 3.3)
   mysql2 (~> 0.5)
+  pagy
   pry-rails
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)

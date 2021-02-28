@@ -8,7 +8,7 @@
 end
 
 
-User.limit(10).each do |user|
+User.limit(20).each do |user|
   article = user.articles.create(
     body: Faker::Games::LeagueOfLegends.quote,
     title: Faker::Game.title

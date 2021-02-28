@@ -2,10 +2,10 @@ class ArticlesController < ApplicationController
   before_action :login_required, except: :index
 
   def index
-    @articles = if current_user
-                  current_user.articles.includes(:user)
+    @pagy,@articles = if current_user
+                  pagy(current_user.articles.includes(:user))
                 else
-                  Article.includes(:user)
+                  pagy(Article.includes(:user))
                 end
   end
 
