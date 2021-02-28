@@ -10,7 +10,10 @@ html
     = stylesheet_pack_tag 'application'
     = stylesheet_link_tag 'application', media: 'all'
   body
-    = render 'shared/header'
+    - if current_user
+      = render 'shared/header'
+    - else 
+      = render 'shared/before_login_header'
     = render 'shared/flash'
     main
       = yield

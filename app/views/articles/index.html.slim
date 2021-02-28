@@ -1,0 +1,15 @@
+h1 Articles#index
+
+.container
+  .row
+    - @articles.each do |article|
+      .col-sm-4
+        .card.text-center
+          .card-header
+            = link_to article.title, article_path(article)
+          .card-body
+            .card-text
+              = article.body
+          .card-footer.text-muted
+              = link_to "編集", edit_article_path(article), class: 'btn btn-primary'
+              = link_to "削除", article_path(article), class: 'btn btn-danger',method: :delete, data: { confirm: '本当に削除しますか？' }

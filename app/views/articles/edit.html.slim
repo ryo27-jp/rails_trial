@@ -1,0 +1,16 @@
+h1 Articles#edit
+
+.container
+  .row
+    .col-md-6.offset-md-3
+      .card
+        = form_with model: [@article], local: true do |f|
+          = render 'shared/error_messages', model: @article
+          .form-group
+            = f.label :title, 'タイトル'
+            = f.text_field :title, class: 'form-control'
+          .form-group
+            = f.label :body, 'メールアドレス'
+            = f.text_area :body, class: 'form-control'
+
+            = f.submit '更新する', class: 'btn btn-primary'
