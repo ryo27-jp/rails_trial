@@ -1,0 +1,20 @@
+ja:
+  activerecord:
+    models:
+      user: 'ユーザー'
+      article: '投稿'
+    attributes:
+      user:
+        email: 'メールアドレス'
+        password: 'パスワード'
+        password_confirmation: 'パスワード確認'
+        name: 'ユーザー名'
+      article:
+        title: 'タイトル'
+        body: '本文'
+
+  enums:
+    article:
+      status:
+        publish: 公開
+        non_published: 非公開
