@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_action :login_required, except: :index
+  before_action :login_required, except: %i[index show]
 
   def index
     @pagy, @articles = if current_user
