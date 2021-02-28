@@ -22,6 +22,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'html2slim'
 gem 'slim-rails'
 gem 'pagy'
+gem 'rails-i18n'
+gem 'enum_help'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

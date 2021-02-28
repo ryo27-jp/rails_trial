@@ -13,10 +13,10 @@ h1 Articles#edit
             = f.label :body, '本文'
             = f.text_area :body, class: 'form-control'
           .form-group
-            = f.label :status, :publish
-            = f.radio_button :status, :publish, class: 'custom-control custom-radio custom-control-inline'
-            = f.label :status, :non_published
-            = f.radio_button :status, :non_published, class: 'custom-control custom-radio custom-control-inline' 
+            = f.collection_radio_buttons :status, Article.statuses_i18n, :first, :last, include_hidden: false do |b|
+              - content_tag(:div, class: "custom-control custom-radio custom-control-inline") do
+                - b.radio_button(class: "custom-control custom-radio") + b.label(class: "custom-control custom-radio")
+
           
 
           = f.submit '更新する', class: 'btn btn-primary'
