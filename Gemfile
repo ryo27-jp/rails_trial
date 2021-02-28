@@ -21,6 +21,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'bcrypt', '~> 3.1.7'
 gem 'html2slim'
 gem 'slim-rails'
+gem 'pagy'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
@@ -44,6 +45,7 @@ group :development do
   gem 'pry-rails'
   gem 'rubocop'
   gem 'spring'
+  gem 'faker'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

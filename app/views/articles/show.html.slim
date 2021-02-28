@@ -1,0 +1,9 @@
+.container
+  table.table.table-hover
+    tbody
+      tr 
+        th= Article.human_attribute_name(:title)
+        td= @article.title
+      tr 
+        th= Article.human_attribute_name(:body)
+        td= @article.body
