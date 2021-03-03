@@ -4,7 +4,7 @@ class ArticlesController < ApplicationController
 
   def index
     @pagy, @articles = if current_user
-                         pagy(Article.includes(:user).where(status: "publish").or(current_user.articles.non_published))
+                         pagy(Article.includes(:user).where(status: 'publish').or(current_user.articles.non_published))
                        else
                          pagy(Article.includes(:user).publish)
                        end
@@ -44,7 +44,7 @@ class ArticlesController < ApplicationController
   def destroy
     article = current_user.articles.find(params[:id])
     article.destroy!
-    redirect_to articles_path, success: '投稿を削除しました。' 
+    redirect_to articles_path, success: '投稿を削除しました。'
   end
 
   private
@@ -55,8 +55,6 @@ class ArticlesController < ApplicationController
 
   def correct_article
     @article = Article.find(params[:id])
-    if @article.user_id != current_user.id
-      redirect_to root_path, warning: "権限がありません"
-    end
+    redirect_to root_path, warning: '権限がありません' if @article.user_id != current_user.id
   end
 end

@@ -14,8 +14,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def updat
     if @user.update(user_params)
@@ -34,8 +33,6 @@ class UsersController < ApplicationController
 
   def correct_user
     @user = User.find(params[:id])
-    if @user != current_user
-    redirect_to root_path, warning: "権限がありません"
-    end
+    redirect_to root_path, warning: '権限がありません' if @user != current_user
   end
 end
