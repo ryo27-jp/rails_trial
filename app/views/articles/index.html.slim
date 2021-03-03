@@ -2,7 +2,6 @@
   .container
     .row
       - @articles.each do |article|
-       - if article.publish? || current_user
         .col-sm-4
           .card.text-center
             .card-header
@@ -10,7 +9,7 @@
             .card-body
               .card-text
                 = article.body
-            - if current_user   
+            - if article&.user_id == current_user&.id
               .card-footer.text-muted
                   = link_to "編集", edit_article_path(article), class: 'btn btn-primary'
                   = link_to "削除", article_path(article), class: 'btn btn-danger',method: :delete, data: { confirm: '本当に削除しますか？' }
