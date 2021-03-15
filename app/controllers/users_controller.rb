@@ -33,6 +33,7 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :email, :age, :password, :password_confirmation)
   end
 
+  # マイページ化する
   def correct_user
     @user = User.find(params[:id])
     redirect_to root_path, warning: '権限がありません' if @user != current_user
