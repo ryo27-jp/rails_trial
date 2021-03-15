@@ -14,9 +14,11 @@ class UsersController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    @user = User.find(params[:id])
+  end
 
-  def updat
+  def update
     if @user.update(user_params)
       redirect_to root_path, success: '更新しました'
     else

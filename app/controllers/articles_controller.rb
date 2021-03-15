@@ -1,10 +1,9 @@
 class ArticlesController < ApplicationController
   before_action :login_required, except: %i[index show]
-  before_action :correct_article, only: %i[edit update]
 
   def index
     @pagy, @articles = if current_user
-                         pagy(Article.includes(:user).where(status: 'publish').or(current_user.articles.non_published))
+                         pagy(Article.includes(:user).where(status: 'publish').or(current_user.articles))
                        else
                          pagy(Article.includes(:user).publish)
                        end
@@ -51,10 +50,5 @@ class ArticlesController < ApplicationController
 
   def article_params
     params.require(:article).permit(:title, :body, :status)
-  end
-
-  def correct_article
-    @article = Article.find(params[:id])
-    redirect_to root_path, warning: '権限がありません' if @article.user_id != current_user.id
   end
 end
