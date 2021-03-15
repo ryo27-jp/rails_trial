@@ -7,4 +7,8 @@ class User < ApplicationRecord
   validates :password_confirmation, presence: true
 
   has_many :articles
+
+  def mine?(object)
+    self.id == object.user_id
+  end
 end

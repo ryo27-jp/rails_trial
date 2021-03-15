@@ -3,9 +3,9 @@ class ArticlesController < ApplicationController
 
   def index
     @pagy, @articles = if current_user
-                         pagy(current_user.articles.includes(:user))
+                         pagy(Article.includes(:user).where(status: 'publish').or(current_user.articles))
                        else
-                         pagy(Article.includes(:user))
+                         pagy(Article.includes(:user).publish)
                        end
   end
 
@@ -41,8 +41,9 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
-    @article = current_user.articles.find(params[:id])
-    redirect_to articles_path, success: '投稿を削除しました。' if @article.destroy!
+    article = current_user.articles.find(params[:id])
+    article.destroy!
+    redirect_to articles_path, success: '投稿を削除しました。'
   end
 
   private
